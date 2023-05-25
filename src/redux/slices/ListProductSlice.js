@@ -7,9 +7,13 @@ const initialState = {
 const ListProductSlice = createSlice({
     name: 'ListProductSlice',
     initialState,
-    reducers: {}
+    reducers: {
+        setListProduct: (state,action) => {
+            state.listProduct = action.payload
+        }
+    }
 });
 
-export const { } = ListProductSlice.actions
+export const { setListProduct } = ListProductSlice.actions
 
 export default ListProductSlice.reducer
