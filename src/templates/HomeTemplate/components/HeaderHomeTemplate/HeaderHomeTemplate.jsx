@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './HeaderHomeTemplate.scss'
 
 import LogoIcon from 'src/assets/imgs/logo.svg'
 import SearchIcon from 'src/assets/imgs/search.svg'
 import CartIcon from 'src/assets/imgs/cart.svg'
+import { useSelector } from 'react-redux'
 
 
 
@@ -12,6 +13,8 @@ function HeaderHomeTemplate() {
     // const handleActive = () => {
     //     return ({isActive}) => isActive ? 'nav-link font-weight-bold text-white' : 'nav-link'
     // }
+
+    const {cart} = useSelector(state => state.ListProductReducer)
 
     return (
         <div className='header'>
@@ -31,7 +34,7 @@ function HeaderHomeTemplate() {
                     <div className="cart navbar-item">
                         <NavLink to='/cart' className={'link link-cart'} >
                             <img src={CartIcon} alt="" />
-                            (1)
+                            ({cart})
                         </NavLink>
                     </div>
                     <div className="login navbar-item">

@@ -5,9 +5,10 @@ import ListProduct from '../../components/ListProduct/ListProduct'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { setListProduct } from '../../redux/slices/ListProductSlice'
+import { useScroolTop } from '../../hooks/useScroolTop'
 
 function Home() {
-
+    useScroolTop()
     const dispatch = useDispatch()
 
     const getListProduct = async () => {

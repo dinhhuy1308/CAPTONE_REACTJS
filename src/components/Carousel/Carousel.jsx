@@ -29,7 +29,7 @@ function CarouselHome() {
         <>
             <img className='polygon2' src={polygon2} alt="" onClick={() => { carouselRef.current.next() }} />
             <img className='polygon1' src={polygon1} alt="" onClick={() => { carouselRef.current.prev() }} />
-            <Carousel ref={carouselRef} autoplay afterChange={onChange}>
+            <Carousel ref={carouselRef}  afterChange={onChange}>
                 {listProduct.map((product, item) => {
                     return (
                         <div style={contentStyle} key={item}>
