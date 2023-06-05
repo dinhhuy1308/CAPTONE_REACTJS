@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import './DetailProduct.scss'
-import { settoCart } from '../../redux/slices/ListProductSlice'
+import { setListProductCart } from '../../redux/slices/Product'
+import Swal from 'sweetalert2'
+
 
 function DetailProduct() {
-    const { productDetail } = useSelector(state => state.ListProductReducer)
-    const [count, setCount] = useState(1)
-    // const {count} = useSelector(state => state.ListProductReducer)
+    const { productDetail, listProductCart } = useSelector(state => state.ListProductReducer)
+    const [count, setCount] = useState(0)
+    const params = useParams()
     const dispatch = useDispatch()
 
     const handleChangeNumber = (value) => {
@@ -16,9 +18,39 @@ function DetailProduct() {
         }
     }
 
+    useEffect(() => {
+        const product = listProductCart.find((item) => item.id == params.productID)
+        const num = product ? product.number : 0
+        setCount(num)
+    }, [params.productID])
+
+
     const addToCart = () => {
-        // localStorage.setItem('cart', JSON.stringify )
-        dispatch(settoCart(count))
+
+        if (count === 0) {
+            Swal.fire(
+                'Please choose the quantity you want to buy',
+                '',
+                'question'
+            )
+            setTimeout(() => {
+                Swal.close();
+            }, 1500);
+
+
+            // alert('Please choose the quantity you want to buy')
+        } else {
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Add to cart success',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            dispatch(setListProductCart({ ...productDetail, number: count }));
+              
+        }
+
     }
 
     return (

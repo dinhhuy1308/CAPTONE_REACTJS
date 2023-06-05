@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './HeaderHomeTemplate.scss'
 
@@ -10,11 +10,9 @@ import { useSelector } from 'react-redux'
 
 
 function HeaderHomeTemplate() {
-    // const handleActive = () => {
-    //     return ({isActive}) => isActive ? 'nav-link font-weight-bold text-white' : 'nav-link'
-    // }
 
-    const {cart} = useSelector(state => state.ListProductReducer)
+    const {listProductCart} = useSelector(state => state.ListProductReducer)
+
 
     return (
         <div className='header'>
@@ -34,7 +32,7 @@ function HeaderHomeTemplate() {
                     <div className="cart navbar-item">
                         <NavLink to='/cart' className={'link link-cart'} >
                             <img src={CartIcon} alt="" />
-                            ({cart})
+                            ({listProductCart.length})
                         </NavLink>
                     </div>
                     <div className="login navbar-item">

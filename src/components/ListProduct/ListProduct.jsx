@@ -8,7 +8,7 @@ function ListProduct() {
 
     return (
         <div className='row' style={{marginLeft:99}}>
-            {listProduct.map((product,index)=>{
+            { Array.isArray(listProduct) && listProduct.map((product,index)=>{
                 return <div className="col-4" key={index}>
                 <CartProduct product={product} />
             </div>
