@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getLocalStorage, saveLocalStogare } from '../../utils';
+import { getLocalStorage, saveLocalStogare } from '../../utils/LocalStorage/LocalStorage';
 
 // const listProductCart = JSON.parse(localStorage.getItem('listProductCart')) || [];
 const listProductCart = getLocalStorage('listProductCart') || []
