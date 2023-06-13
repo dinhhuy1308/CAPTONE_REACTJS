@@ -36,9 +36,6 @@ function DetailProduct() {
             setTimeout(() => {
                 Swal.close();
             }, 1500);
-
-
-            // alert('Please choose the quantity you want to buy')
         } else {
             Swal.fire({
                 position: 'center',

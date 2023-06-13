@@ -3,16 +3,6 @@ import HomeTemplate from './templates/HomeTemplate/HomeTemplate'
 import { lazy } from 'react'
 import './assets/scss/style.scss'
 
-
-
-// import Home from "./pages/Home/Home"
-// import Login from './pages/Login/Login'
-// import Register from './pages/Register/Register'
-// import Cart from './pages/Cart/Cart'
-// import Detail from './pages/Detail/Detail'
-// import Search from './pages/Search/Search'
-// import Profile from './pages/Profile/Profile'
-
 const Home = lazy(() => import('./pages/Home/Home'))
 const Login = lazy(() => import('./pages/Login/Login'))
 const Register = lazy(() => import('./pages/Register/Register'))

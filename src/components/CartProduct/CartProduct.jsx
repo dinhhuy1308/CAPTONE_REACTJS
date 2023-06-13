@@ -1,29 +1,57 @@
-import React, { useRef, useState } from 'react'
-import './CartProduct.scss'
-import fullHeart from 'src/assets/imgs/fullHeart.svg'
-import borderHeart from 'src/assets/imgs/borderHeart.svg'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import borderHeart from 'src/assets/imgs/borderHeart.svg'
+import fullHeart from 'src/assets/imgs/fullHeart.svg'
+import './CartProduct.scss'
+import { getLocalStorage } from '../../utils/LocalStorage/LocalStorage'
+import { ACCESS_TOKEN } from '../../contants'
 
 function CartProduct(props) {
-    const { product } = props
-    const imgRef = useRef()
-    const [isImageChanged, setIsImageChanged] = useState(false);
+    const { product, listFavor } = props
+    const [isImageChanged, setIsImageChanged] = useState(borderHeart);
+    const [isFavor, setFavor] = useState(false)
 
-
-    const changeImg = () => {
-        const img = imgRef.current;
-        if (isImageChanged) {
-            img.src = fullHeart;
-            setIsImageChanged(false);
+    useEffect(() => {
+        if(listFavor?.find((favorite) => favorite.id === product.id)) {
+            setFavor(true);
+            setIsImageChanged(fullHeart);
         } else {
-            img.src = borderHeart;
-            setIsImageChanged(true);
+            setFavor(false);
+            setIsImageChanged(borderHeart);
+        }
+    },[])
+
+
+    const handleFavorite = async (link) => {
+        try {
+            await axios({
+                method: 'get',
+                url: link,
+                headers:{
+                    Authorization: `Bearer ${getLocalStorage(ACCESS_TOKEN)}`,
+                }
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handleChangeFavorite = (id) => {
+        if (!isFavor) {
+            handleFavorite(`https://shop.cyberlearn.vn/api/Users/like?productId=${id}`);
+            setIsImageChanged(fullHeart);
+            setFavor(true);
+        } else {
+            handleFavorite(`https://shop.cyberlearn.vn/api/Users/unlike?productId=${id}`);
+            setIsImageChanged(borderHeart);
+            setFavor(false);
         }
     }
 
     return (
         <div className='card-product'>
-            <img className='fullHeart' ref={imgRef} src={fullHeart} alt="" onClick={changeImg} />
+            <img  className='fullHeart' src={isImageChanged} alt="" onClick={()=>{handleChangeFavorite(product.id)}} />
             <div className="card-product-img">
                 <img src={product.image} alt="" />
             </div>

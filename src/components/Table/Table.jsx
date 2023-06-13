@@ -16,7 +16,8 @@ function App() {
     const { listProductCart } = useSelector(state => state.ListProductReducer)
     const dispatch = useDispatch()
     const [listBuy, setListBuy] = useState([]);
-    const {user} = useSelector(state => state.UserTestReducer)
+    const { userProfile } = useSelector(state => state.UserReducer);
+
 
 
     const sweetDelete = (id) => {
@@ -53,11 +54,6 @@ function App() {
         }
     };
 
-
-    const deletePro = (id) => {
-        sweetDelete(id)
-    }
-
     const handleSubmitOrder = async () => {
         if (listBuy.length === 0) {
             return
@@ -82,7 +78,7 @@ function App() {
             if(result.isConfirmed) {
                 await axios.post('https://shop.cyberlearn.vn/api/Users/order', {
                     orderDetail: list,
-                    email: user.email,
+                    email: userProfile.email,
                 });
                 list.forEach(item => {
                     dispatch(deleteProduct(item.productId))
@@ -152,7 +148,7 @@ function App() {
                     render={(_, product) => (
                         <>
                             <button className='btn-edit' onClick={() => handleEdit(product.id)} >EDIT</button>
-                            <button className='btn-delete' onClick={() => deletePro(product.id)}>DELETE</button>
+                            <button className='btn-delete' onClick={() => sweetDelete(product.id)}>DELETE</button>
                         </>
                     )}
                 />

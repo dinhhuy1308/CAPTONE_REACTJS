@@ -15,7 +15,6 @@ import FacebookIcon from '../../assets/imgs/facebook.svg'
 
 
 
-// const  ACCESS_TOKEN = 'accessToken';
 
 function Login() {
     const navigate = useNavigate()

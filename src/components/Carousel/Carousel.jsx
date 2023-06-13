@@ -6,21 +6,8 @@ import { Carousel } from 'antd';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-const contentStyle = {
-    // margin: 0,
-    // height: '160px',
-    // color: '#fff',
-    // lineHeight: '160px',
-    // textAlign: 'center',
-    // background: '#364d79',
-};
 
 function CarouselHome() {
-
-    const onChange = (currentSlide) => {
-
-    };
-
     const { listProduct } = useSelector(state => state.ListProductReducer)
 
     const carouselRef = useRef()
@@ -29,10 +16,10 @@ function CarouselHome() {
         <>
             <img className='polygon2' src={polygon2} alt="" onClick={() => { carouselRef.current.next() }} />
             <img className='polygon1' src={polygon1} alt="" onClick={() => { carouselRef.current.prev() }} />
-            <Carousel ref={carouselRef}  afterChange={onChange}>
+            <Carousel autoplay ref={carouselRef}  >
                 {listProduct.map((product, item) => {
                     return (
-                        <div style={contentStyle} key={item}>
+                        <div  key={item}>
                             <div className="row" >
                                 <div className="col-8 carousel-product" >
                                     <img src={product.image} alt="" />
