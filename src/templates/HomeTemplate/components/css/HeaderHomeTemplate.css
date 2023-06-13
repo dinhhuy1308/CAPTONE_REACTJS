@@ -1,0 +1,63 @@
+.header .logo-header {
+  background-color: #000;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo-header .logo .logo-link {
+  margin-left: 24px;
+}
+.header .logo-header .navbar-search {
+  display: flex;
+  margin-right: 46px;
+}
+.header .logo-header .navbar-search .navbar-item {
+  margin-left: 15px;
+}
+.header .logo-header .navbar-search .navbar-item .link {
+  color: #fff;
+}
+.header .logo-header .navbar-search .navbar-item .link:hover {
+  color: #9DE167;
+  transition: all 0.5;
+}
+.header .logo-header .navbar-search .navbar-item .link-cart, .header .logo-header .navbar-search .navbar-item .link-search {
+  font-size: 20px;
+}
+.header .menu-header {
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.header .type_bar {
+  padding: 0 2.4rem;
+  height: 5rem;
+}
+.header .type_bar ul {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+.header .type_bar ul li {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2.4rem;
+}
+.header .type_bar ul li a {
+  color: #000000;
+  text-decoration: none;
+  opacity: 0.7;
+  padding: 1rem 0;
+}
+.header .type_bar ul li .active_link {
+  font-weight: 400;
+  opacity: 1;
+  border-bottom: 1px solid #000000;
+}
+.header .type_bar ul li + li {
+  margin-left: 3rem;
+}/*# sourceMappingURL=HeaderHomeTemplate.css.map */

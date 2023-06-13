@@ -3,11 +3,11 @@ import { getLocalStorage, saveLocalStogare } from '../../utils/LocalStorage/Loca
 
 // const listProductCart = JSON.parse(localStorage.getItem('listProductCart')) || [];
 const listProductCart = getLocalStorage('listProductCart') || []
-
 const initialState = {
     listProduct: [],
     productDetail: {},
     listProductCart: listProductCart,
+    
 }
 
 

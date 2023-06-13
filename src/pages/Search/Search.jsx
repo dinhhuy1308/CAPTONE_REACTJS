@@ -1,8 +1,11 @@
 import React from 'react'
+import SearchProduct from '../../components/SearchProduct/SearchProduct'
 
 function Search() {
   return (
-    <div>Search</div>
+    <div>
+      <SearchProduct />
+    </div>
   )
 }
 

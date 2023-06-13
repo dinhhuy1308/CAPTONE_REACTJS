@@ -4,20 +4,18 @@ import DetailProduct from '../../components/DetailProduct/DetailProduct'
 import axios from 'axios'
 import { setProducDetail } from '../../redux/slices/Product'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import CartProduct from '../../components/CartProduct/CartProduct'
-import { getProductByIdApi } from '../../services/product.services'
 
 
 function Detail() {
 	const params = useParams()
 	const dispatch = useDispatch()
 
-	const { productDetail, isLoading } = useSelector(state => state.ListProductReducer)
+	const { productDetail } = useSelector(state => state.ListProductReducer)
 
 	const getProductById = async (id) => {
 		const result = await axios.get(`https://shop.cyberlearn.vn/api/Product/getbyid?id=${id}`)
-		// const result = await getProductByIdApi(id)
 		const action = setProducDetail(result.data.content)
 		dispatch(action)
 	}
