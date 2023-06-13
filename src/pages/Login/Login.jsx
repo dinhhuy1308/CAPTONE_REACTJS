@@ -1,6 +1,6 @@
 // import React from 'react';
 import './Login.scss';
-import './../register/register.scss';
+import './../Register/Register.scss';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button, Space } from 'antd';
