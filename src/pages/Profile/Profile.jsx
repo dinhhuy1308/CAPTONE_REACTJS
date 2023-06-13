@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import './Profile.scss';
-import './../register/register.scss';
+import './../Register/Register.scss';
 import { Button, Space } from 'antd';
 import axios from 'axios';
 import { useFormik } from 'formik';
