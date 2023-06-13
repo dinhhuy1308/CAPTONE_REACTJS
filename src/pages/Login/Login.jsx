@@ -1,5 +1,5 @@
 // import React from 'react';
-import './login.scss';
+import './Login.scss';
 import './../register/register.scss';
 
 import { NavLink, useNavigate } from 'react-router-dom';
